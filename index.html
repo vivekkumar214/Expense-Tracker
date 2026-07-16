@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Expense Tracker with Budget Insights</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <header>
+
+            <h1>💰 Expense Tracker</h1>
+
+            <p>Track Your Income & Expenses</p>
+
+            <button id="darkModeBtn">
+                🌙 Dark Mode
+            </button>
+
+        </header>
+
+        <!-- Dashboard -->
+        <section class="dashboard">
+
+            <div class="card balance">
+                <h3>Current Balance</h3>
+                <h2 id="balance">₹0</h2>
+            </div>
+
+            <div class="card income">
+                <h3>Total Income</h3>
+                <h2 id="income">₹0</h2>
+            </div>
+
+            <div class="card expense">
+                <h3>Total Expense</h3>
+                <h2 id="expense">₹0</h2>
+            </div>
+
+            <div class="card budget">
+                <h3>Monthly Budget</h3>
+                <h2 id="budget">₹0</h2>
+            </div>
+
+        </section>
+
+        <!-- Budget -->
+        <section class="budget-section">
+
+            <h2>Set Monthly Budget</h2>
+
+            <input
+                type="number"
+                id="budgetInput"
+                placeholder="Enter Budget">
+
+            <button id="saveBudget">
+                Save Budget
+            </button>
+
+            <p id="budgetWarning"></p>
+
+        </section>
+
+        <!-- Add Transaction -->
+        <section class="transaction-form">
+
+            <h2>Add Transaction</h2>
+
+            <form id="expenseForm">
+
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="Transaction Title"
+                    required>
+
+                <input
+                    type="number"
+                    id="amount"
+                    placeholder="Amount"
+                    required>
+
+                <select id="type">
+                    <option value="Income">Income</option>
+                    <option value="Expense">Expense</option>
+                </select>
+
+                <select id="category">
+                    <option>Food</option>
+                    <option>Travel</option>
+                    <option>Shopping</option>
+                    <option>Education</option>
+                    <option>Bills</option>
+                    <option>Medical</option>
+                    <option>Entertainment</option>
+                    <option>Other</option>
+                </select>
+
+                <input
+                    type="date"
+                    id="date"
+                    required>
+
+                <button type="submit">
+                    Add Transaction
+                </button>
+
+            </form>
+
+        </section>
+
+        <!-- Transaction History -->
+        <section class="history">
+
+            <h2>Transaction History</h2>
+
+            <input
+                type="text"
+                id="search"
+                placeholder="Search Transaction">
+
+            <select id="filter">
+                <option value="All">All Transactions</option>
+                <option value="Income">Income</option>
+                <option value="Expense">Expense</option>
+            </select>
+
+            <input
+                type="date"
+                id="dateFilter">
+
+            <button id="exportCSV">
+                📄 Export CSV
+            </button>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Title</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="transactionList">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <!-- Charts -->
+        <section class="charts">
+
+            <div class="chart-box">
+                <h2>Expense By Category</h2>
+                <canvas id="pieChart"></canvas>
+            </div>
+
+            <div class="chart-box">
+                <h2>Income vs Expense</h2>
+                <canvas id="barChart"></canvas>
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
